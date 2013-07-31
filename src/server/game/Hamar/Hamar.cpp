@@ -14,6 +14,7 @@
 
 
 #define QUEUE_UPDATE_INTERVAL 1000
+#define DEBUG_MODE 0 // 0 for now, plan on making a debugging system for this.
 // Queueu System
 void HamarQueueu::AddPlayer(uint64 guid)
 {
@@ -65,8 +66,11 @@ void HamarQueueu::Update(uint32 diff)
 
     if(updateTimer > QUEUE_UPDATE_INTERVAL)
     {
+        // Check to see if there's open games
+        if(!sHamarMgr->IsFreeSlots())
+            return;
         // Remove Offline Players
-
+        RemoveOfflinePlayers();
         // Process Queuers
         ProcessQueuePlayers();
         // Process Accepted ones
@@ -443,7 +447,7 @@ void HamarBattle::EndBattleGround(Player* winner)
     m_status = HAMAR_ENDED;
     // Teleport players away.
 
-    if(winner && winner->IsInWorld())
+    if(winner && winner->IsInWorld()) // Temporary award for winning, planning on creating a matchmaking system.
     {
         winner->ModifyArenaPoints(3); // 3 arenapoints per win.
         AnnounceToPlayers(winner->GetName() + " has won the game.");
@@ -583,6 +587,14 @@ uint32 HamarBattleManager::CreatePhaseMask()
     }
 
     return NULL;
+}
+
+bool HamarBattleManager::IsFreeSlots()
+{
+    for(std::map<uint32, bool>::const_iterator itr = m_availablePhases.begin(); itr != m_availablePhases.end(); ++itr)
+        if(itr->second)
+            return true;
+    return false;
 }
 
 void HamarBattleManager::ReturnPhaseMask(uint32 phaseMask)

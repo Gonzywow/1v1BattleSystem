@@ -55,7 +55,7 @@
 #include "BattlegroundMgr.h"
 #include "Battlefield.h"
 #include "BattlefieldMgr.h"
-#include "hamarbattle.h"
+#include "hamarbattle.h" // Highlight comment ;)
 
 void WorldSession::HandleRepopRequestOpcode(WorldPacket& recvData)
 {
@@ -103,7 +103,7 @@ void WorldSession::HandleGossipSelectOptionOpcode(WorldPacket& recvData)
 
     Creature* unit = NULL;
     GameObject* go = NULL;
-    Player* plr = NULL;
+    Player* plr = NULL; // highlight comment
     if (IS_CRE_OR_VEH_GUID(guid))
     {
         unit = GetPlayer()->GetNPCIfCanInteractWith(guid, UNIT_NPC_FLAG_NONE);
@@ -122,7 +122,7 @@ void WorldSession::HandleGossipSelectOptionOpcode(WorldPacket& recvData)
             return;
         }
     }
-    else if(IS_PLAYER_GUID(guid))
+    else if(IS_PLAYER_GUID(guid)) // highlight comment ;)
     {
         if(guid == _player->GetGUID())
             plr = _player;
@@ -175,7 +175,7 @@ void WorldSession::HandleGossipSelectOptionOpcode(WorldPacket& recvData)
             if (!sScriptMgr->OnGossipSelect(_player, unit, _player->PlayerTalkClass->GetGossipOptionSender(gossipListId), _player->PlayerTalkClass->GetGossipOptionAction(gossipListId)))
                 _player->OnGossipSelect(unit, gossipListId, menuId);
         }
-        else if(plr)
+        else if(plr) // highlight comment
         {
             sHamarQueueMgr->ReceiveBattleAnswer(plr, _player->PlayerTalkClass->GetGossipOptionSender(gossipListId), _player->PlayerTalkClass->GetGossipOptionAction(gossipListId), menuId);
         }

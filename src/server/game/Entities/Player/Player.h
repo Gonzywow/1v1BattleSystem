@@ -51,7 +51,7 @@ class PlayerMenu;
 class PlayerSocial;
 class SpellCastTargets;
 class UpdateMask;
-class HamarBattle;
+class HamarBattle; // highlight comment
 
 typedef std::deque<Mail*> PlayerMails;
 
@@ -2056,7 +2056,7 @@ class Player : public Unit, public GridObject<Player>
         /*********************************************************/
         /***               1v1 ARENA PVP SYSTEM                ***/
         /*********************************************************/
-        
+        // Hightlight comment ;)
         HamarBattle* pvpBattle;
         bool InHamarBattle() { return pvpBattle != NULL;}
 

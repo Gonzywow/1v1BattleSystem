@@ -60,7 +60,7 @@
 #include "World.h"
 #include "WorldPacket.h"
 #include "WorldSession.h"
-#include "hamarbattle.h"
+#include "hamarbattle.h" // highlight comment
 
 #include <math.h>
 
@@ -15361,7 +15361,7 @@ void Unit::Kill(Unit* victim, bool durabilityLoss)
         }
     }
 
-    if(player && player->InHamarBattle())
+    if(player && player->InHamarBattle()) // highlight comment
     {
         if(HamarBattle * hm = player->pvpBattle)
         {

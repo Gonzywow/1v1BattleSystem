@@ -131,6 +131,7 @@ public:
     void RemoveBattle(HamarBattle *hm);
     void CreatePhases();
     uint32 CreatePhaseMask();
+    bool IsFreeSlots();
     void ReturnPhaseMask(uint32 phaseMask);
 private:
     std::list<HamarBattle*> m_battles;

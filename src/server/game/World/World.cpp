@@ -80,7 +80,7 @@
 #include "Warden.h"
 #include "CalendarMgr.h"
 #include "BattlefieldMgr.h"
-#include "hamarbattle.h"
+#include "hamarbattle.h" // part of 1v1 battlescript
 
 ACE_Atomic_Op<ACE_Thread_Mutex, bool> World::m_stopEvent = false;
 uint8 World::m_ExitCode = SHUTDOWN_EXIT_CODE;
@@ -2044,10 +2044,10 @@ void World::Update(uint32 diff)
     sBattlefieldMgr->Update(diff);
     RecordTimeDiff("BattlefieldMgr");
 
-    sHamarQueueMgr->Update(diff);
+    sHamarQueueMgr->Update(diff); // highlight comment
     RecordTimeDiff("HamarQueueu");
 
-    sHamarMgr->Update(diff);
+    sHamarMgr->Update(diff); // highlight comment
     RecordTimeDiff("HamarManager");
 
     ///- Delete all characters which have been deleted X days before
