@@ -1791,6 +1791,9 @@ void World::SetInitialWorldSettings()
     TC_LOG_INFO(LOG_FILTER_SERVER_LOADING, "Calculate guild limitation(s) reset time...");
     InitGuildResetTime();
 
+    TC_LOG_INFO(LOG_FILTER_SERVER_LOADING, "[HamarBattle] Creating phases...");
+    sHamarMgr->CreatePhases();
+
     LoadCharacterNameData();
 
     uint32 startupDuration = GetMSTimeDiffToNow(startupBegin);
